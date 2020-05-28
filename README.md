@@ -1,3 +1,5 @@
+# Game of life
+
 For a space that is 'populated':
 Each cell with one or no neighbors dies, as if by solitude.
 Each cell with four or more neighbors dies, as if by overpopulation.
