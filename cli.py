@@ -5,14 +5,11 @@ __date__ = "2020-05-07"
 import time
 import random
 from copy import deepcopy
-board = []
 ALIVE = 1
 DEAD = 0
 
 def board_init(h, w):
     """Initialize the board, assigning a random state (1: alive, 0: dead) to every cell."""
-
-    global board
     board = []
 
     for y in range(h):
@@ -23,7 +20,9 @@ def board_init(h, w):
 
         board.append(row)
 
-def count_neighbours(x, y):
+    return board
+
+def count_neighbours(board, x, y):
     """Counts how many cells around the one with the given coordinates are alive."""
 
     neighbours = 0
@@ -41,23 +40,21 @@ def count_neighbours(x, y):
 
     return neighbours
 
-def update():
+def update(board):
     """Updates the board"""
-
-    global board
     next_board = deepcopy(board)
     
     for x in range(len(board)):
         for y in range(len(board[x])):
-            neighbours = count_neighbours(x ,y)
+            neighbours = count_neighbours(board, x ,y)
 
             if board[x][y] == ALIVE and (neighbours < 2 or neighbours > 3):
                 next_board[x][y] = 0
 
             if board[x][y] == DEAD and neighbours == 3:
                 next_board[x][y] = 1
-
-    board = next_board
+                
+    return next_board
 
 def show(board):
     """Shows the board with * where the cell is alive and a space when the cell is dead."""
@@ -75,11 +72,11 @@ def show(board):
     
 def game_of_life(h, w):
     """This function is the one that make the game run"""
-    board_init(h, w)
+    board = board_init(h, w)
     show(board)
 
     while True:
-        update()
+        board = update(board)
         show(board)
         time.sleep(0.25)
     
