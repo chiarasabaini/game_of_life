@@ -9,4 +9,4 @@ Each cell with two or three neighbors survives.
 For a space that is 'empty' or 'unpopulated'
 Each cell with three neighbors becomes populated.
 
-![alt text](img/game_of_life.png)
+![alt text](/img/game_of_life.png)
