@@ -1,4 +1,4 @@
-__author__ = "chiara@sabaini.com"
+__author__ = "chiara"
 __version__ = "2.0"
 __date__ = "2020-05-07"
 
